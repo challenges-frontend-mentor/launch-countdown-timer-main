@@ -1,0 +1,110 @@
+@use "../config/variables" as *;
+@use "sass:math";
+$square: 140px;
+$square-movile: 70px;
+$square-border-movile: 5px;
+$square-border: 10px;
+$point-black-movile: 6px;
+$point-black: 20px;
+
+.title {
+    font-size:18px;
+    letter-spacing: 7px;
+    padding-top:35%;
+    font-weight: 400;
+    
+    @media screen and (max-width:1440px - 1px) {
+        margin-bottom:15%;
+    }
+    
+    @media screen and (min-width:1440px) {
+        letter-spacing: 8px;
+        font-size: 21px;
+        padding-top: 10%;
+        padding-bottom: 7%;
+    }
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, $square-movile);
+    justify-content: center;
+    gap:15px;
+    
+    @media screen and (min-width:1440px) {
+        grid-template-columns: repeat(4, $square);
+        gap: 32px;
+    }
+}
+
+.number-container{
+    max-width: 100%;
+    position: relative;
+    width: $square-movile;
+    height: $square-movile;
+    transform: perspective(450px);
+    transform-style: preserve-3d;
+    background-color: var(--Dark-desaturated-blue-top);
+    border-radius: $square-border-movile;
+    
+    @media screen and (min-width:1440px) {
+        border-radius: $square-border;
+        width:$square;
+        height: $square;
+    }
+
+    &::after, &::before {
+        content: "";
+        display:block;
+        position: absolute;
+        width: math.div($point-black-movile,2);
+        height: $point-black-movile;
+        background-color:var(--Very-dark-mostly-black-blue);
+        transform:translateY(-50%);
+        top:50%;
+
+        @media screen and (min-width:1440px) {
+            width: math.div($point-black,2);
+            height: $point-black;
+        }
+
+    }
+
+    &::after{
+        left: 0;
+        border-top-right-radius:$point-black-movile;
+        border-bottom-right-radius:$point-black-movile;
+
+        @media screen and (min-width:1440px) {
+            border-top-right-radius:$point-black;
+            border-bottom-right-radius:$point-black;
+        }
+    }
+
+    &::before{
+        right: 0;
+        border-top-left-radius:$point-black-movile;
+        border-bottom-left-radius:$point-black-movile;
+
+        @media screen and (min-width:1440px) {
+            border-top-left-radius:$point-black;
+            border-bottom-left-radius:$point-black;   
+        }
+    }
+
+    &__text{
+        color: var(--Grayish-blue);
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 7px;
+        letter-spacing: 3px;
+        text-align: center;
+        margin-top:30px;
+        
+        @media screen and (min-width:1440px) {
+            font-size: 13px;
+            letter-spacing: 8px;
+            margin-top:42px;
+        }
+    }
+}

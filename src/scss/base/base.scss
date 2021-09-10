@@ -1,0 +1,28 @@
+@use "../config/variables" as *;
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: var(--Very-dark-blue);
+    font-family: 'Red Hat Text', sans-serif;
+    margin: 0;
+    text-align: center;  
+    background-image: url(../assets/images/pattern-hills.svg), url(../assets/images/bg-stars.svg);
+    background-repeat:no-repeat;
+    min-height: 100vh;
+    background-size: auto auto;
+    background-position: bottom right, 0 0;
+    
+    @media screen and (min-width:1440px) {
+        background-size: contain;
+        background-position: bottom center, 0 0;
+        
+    }
+}
+
+h1{
+    color: var(--White);
+    margin: 0;
+}

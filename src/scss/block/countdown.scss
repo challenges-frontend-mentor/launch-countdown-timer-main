@@ -1,0 +1,105 @@
+@use "../config/variables" as *;
+@use "sass:math";
+$square: 140px;
+$square-movile: 70px;
+$square-border-movile: 5px;
+$square-border: 10px;
+$point-black-movile: 6px;
+$point-black: 20px;
+
+
+.number-countdown{
+
+    max-width: 100%;
+    position: relative;
+    width: $square-movile;
+    height: $square-movile;
+    background-color: var(--Dark-desaturated-blue-top);
+    border-radius: $square-border-movile;
+    overflow: hidden;
+    
+    @media screen and (min-width:1440px) {
+        border-radius: $square-border;
+        width:$square;
+        height: $square;
+    }
+
+    &__top-front,
+    &__bottom{
+        width: 100%;
+        height: 50%;
+    }
+    
+    &__top-front{
+        background-color: var(--Dark-desaturated-blue-top);
+        border-top-left-radius: $square-border-movile;
+        border-top-right-radius: $square-border-movile;
+        overflow: hidden;
+        
+        @media screen and (min-width:1440px) {
+            border-top-left-radius: $square-border;
+            border-top-right-radius: $square-border;
+        }
+        
+        &::after{
+            position: relative;
+            content: attr(data-number);
+            color: #d15170;
+            font-size: 36px;
+            bottom: -11px;
+            
+            @media screen and (min-width:1440px) {
+                bottom: -18px;
+                font-size: 80px;
+            }
+        }
+
+        &::before{
+            content: "";
+            display:block;
+            position: absolute;
+            width: $point-black-movile;
+            height: $point-black-movile;
+            background-color:var(--Very-dark-mostly-black-blue);
+            transform:translateY(-50%);
+            top:50%;
+            right: math.div($point-black-movile, -2);
+            border-top-left-radius:$point-black-movile;
+            border-bottom-left-radius:$point-black-movile;
+            box-shadow: -$square-movile 0px var(--Very-dark-mostly-black-blue) ;
+
+            @media screen and (min-width:1440px) {
+                box-shadow: -$square 0px var(--Very-dark-mostly-black-blue) ;
+                border-radius: 50%;   
+                width: $point-black;
+                height: $point-black;
+                right: math.div($point-black, -2);
+            }
+        }
+    }
+    
+    &__bottom{
+        background-color: var(--Dark-desaturated-blue-bottom);
+        border-bottom-left-radius: $square-border-movile;
+        border-bottom-right-radius: $square-border-movile;
+        overflow: hidden;
+        
+        @media screen and (min-width:1440px) {
+            border-bottom-left-radius: $square-border;
+            border-bottom-right-radius: $square-border;
+        }
+
+        &::after{
+            position: relative;
+            content: attr(data-number);
+            color: var(--Soft-red);
+            font-size: 36px;
+            bottom: 24px;
+            
+            @media screen and (min-width:1440px) {
+                font-size: 80px;
+                bottom:52px;
+            }
+        }
+    }
+}
